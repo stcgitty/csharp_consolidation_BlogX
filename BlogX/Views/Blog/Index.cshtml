@@ -1,0 +1,35 @@
+﻿@model List<BlogX.Models.Blog>
+@{
+    //Layout = null;
+
+
+}
+
+
+    <script>
+        var pageNo = @ViewBag.Page;
+    </script>
+    <div id="page">
+      @foreach(var b in Model)
+      {
+          <div>            
+              <h1>@Html.ActionLink(b.Title, "detail", new { id = b.Id })</h1>
+              <p>@b.Content</p>
+          </div>
+      }
+    </div>
+    @Html.ActionLink("Next", "Index", new { page= ViewBag.Page + 1 }, new {
+        @class ="next"+ ((ViewBag.hasNext)? " enabled": "")
+    })
+    @Html.ActionLink("Prev", "Index", new { page = ViewBag.Page - 1 }, new {
+        @class = "prev" + ((ViewBag.hasPrev) ? " enabled" : "")
+    })
+    <!--
+    
+    <a class="next" href="">Next</a>
+    <a class="prev" href="">Prev</a>
+    -->
+
+    <!-- create a section to pass this to the layout -->
+    <script type="text/javascript" src="~/JavaScript/Pagey.js"></script>
+

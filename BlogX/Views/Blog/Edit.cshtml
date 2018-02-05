@@ -1,0 +1,19 @@
+﻿@model BlogX.Models.Blog
+@{
+   // Layout = "..//_LayoutPage1.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+
+    <div>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(b => b.Id)
+        @Html.LabelFor(b => b.Title)<br>
+        @Html.EditorFor(b=> b.Title)  <br>
+        @Html.LabelFor(b => b.Content)<br>
+        @Html.EditorFor(b => b.Content)<br>
+
+        <input type="submit" value="Save blog"/>
+    }
+    </div>
